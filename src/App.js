@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import About from './components/About';
+import Services from './components/Services';
+import WhyUs from './components/WhyUs';
+import FAQ from './components/FAQ';
+import Contact from './components/Contact';
+import Disclaimer from './components/Disclaimer';
+import Footer from './components/Footer';
+import FloatingCall from './components/FloatingCall';
+import BookingModal from './components/BookingModal';
 
 function App() {
+  const [bookingOpen, setBookingOpen] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar onBook={() => setBookingOpen(true)} />
+      <main>
+        <Hero onBook={() => setBookingOpen(true)} />
+        <About />
+        <Services onBook={() => setBookingOpen(true)} />
+        <WhyUs onBook={() => setBookingOpen(true)} />
+        <FAQ />
+        <Contact onBook={() => setBookingOpen(true)} />
+      </main>
+      <Disclaimer />
+      <Footer />
+      <FloatingCall onBook={() => setBookingOpen(true)} />
+      <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
+    </>
   );
 }
 
