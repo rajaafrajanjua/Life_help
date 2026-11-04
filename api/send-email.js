@@ -13,22 +13,24 @@ export default async function handler(req, res) {
     topic,
     date,
     time,
+    state,
   } = req.body;
 
   // Basic validation
-  if (!client_name || !client_phone || !client_email || !date || !time) {
+  if (!client_name || !client_phone || !client_email) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
   // Sanitize inputs — strip any HTML tags
-  const sanitize = (str) => String(str).replace(/<[^>]*>/g, '').trim();
+  const sanitize = (str) => String(str || '').replace(/<[^>]*>/g, '').trim();
 
   const name  = sanitize(client_name);
   const phone = sanitize(client_phone);
   const email = sanitize(client_email);
-  const top   = sanitize(topic || 'General Inquiry');
-  const dt    = sanitize(date);
-  const tm    = sanitize(time);
+  const top   = sanitize(topic  || 'General Inquiry');
+  const dt    = sanitize(date   || 'To be scheduled');
+  const tm    = sanitize(time   || 'Flexible');
+  const st    = sanitize(state  || 'Not specified');
 
   // Gmail transporter using app password from env vars
   const transporter = nodemailer.createTransport({
@@ -59,6 +61,8 @@ export default async function handler(req, res) {
                 <td style="padding:10px 0;border-bottom:1px solid #f0ede8;color:#0d1f3c;font-weight:600;font-size:14px;">${phone}</td></tr>
             <tr><td style="padding:10px 0;border-bottom:1px solid #f0ede8;color:#6b6b70;font-size:13px;">Email</td>
                 <td style="padding:10px 0;border-bottom:1px solid #f0ede8;color:#1a8c8c;font-weight:600;font-size:14px;">${email}</td></tr>
+            <tr><td style="padding:10px 0;border-bottom:1px solid #f0ede8;color:#6b6b70;font-size:13px;">State</td>
+                <td style="padding:10px 0;border-bottom:1px solid #f0ede8;color:#0d1f3c;font-weight:600;font-size:14px;">${st}</td></tr>
             <tr><td style="padding:10px 0;border-bottom:1px solid #f0ede8;color:#6b6b70;font-size:13px;">Topic</td>
                 <td style="padding:10px 0;border-bottom:1px solid #f0ede8;color:#0d1f3c;font-weight:600;font-size:14px;">${top}</td></tr>
             <tr><td style="padding:10px 0;border-bottom:1px solid #f0ede8;color:#6b6b70;font-size:13px;">Date</td>

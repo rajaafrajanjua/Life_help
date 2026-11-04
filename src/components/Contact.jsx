@@ -4,7 +4,7 @@ import { Phone, Mail, Clock, Send, CheckCircle2, Calendar } from 'lucide-react';
 
 const PHONE = '+17087042830';
 const PHONE_DISPLAY = '+1 (708) 704-2830';
-const EMAIL = 'alcarr33@yahoo.com';
+const EMAIL = 'alcarr33@gmail.com';
 
 const states = [
   'Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware',
@@ -56,6 +56,8 @@ export default function Contact({ onBook }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
   const [form, setForm] = useState({
     firstName: '', lastName: '', phone: '', email: '',
     state: '', interest: '', time: '', consent: false,
@@ -66,9 +68,32 @@ export default function Contact({ onBook }) {
     [k]: e.target.type === 'checkbox' ? e.target.checked : e.target.value,
   }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError('');
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          client_name:  `${form.firstName} ${form.lastName}`.trim(),
+          client_phone: form.phone,
+          client_email: form.email,
+          topic:        form.interest || 'General Life Insurance Question',
+          date:         form.time || 'To be scheduled',
+          time:         form.time || 'Flexible',
+          state:        form.state,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Submission failed');
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message || 'Something went wrong. Please call us directly.');
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -329,20 +354,33 @@ export default function Contact({ onBook }) {
 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.01, boxShadow: '0 10px 30px rgba(26,140,140,0.35)' }}
-                  whileTap={{ scale: 0.98 }}
+                  disabled={sending}
+                  whileHover={!sending ? { scale: 1.01, boxShadow: '0 10px 30px rgba(26,140,140,0.35)' } : {}}
+                  whileTap={!sending ? { scale: 0.98 } : {}}
                   style={{
                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
                     background: 'linear-gradient(135deg,#2ab5b5,#1a8c8c)',
                     color: '#fff', padding: '16px 24px', borderRadius: '50px',
                     fontSize: '16px', fontWeight: 700,
                     boxShadow: '0 6px 22px rgba(26,140,140,0.3)',
-                    border: 'none', cursor: 'pointer', width: '100%',
+                    border: 'none', cursor: sending ? 'not-allowed' : 'pointer',
+                    width: '100%', opacity: sending ? 0.8 : 1,
                   }}
                 >
                   <Send size={17} strokeWidth={2.5} />
-                  Schedule My Free Policy Review
+                  {sending ? 'Sending…' : 'Schedule My Free Policy Review'}
                 </motion.button>
+
+                {error && (
+                  <div style={{
+                    padding: '12px 16px',
+                    background: '#fff5f5', border: '1px solid #fed7d7',
+                    borderRadius: '10px', color: '#c53030',
+                    fontSize: '13px', lineHeight: '1.6',
+                  }}>
+                    {error}
+                  </div>
+                )}
 
                 <p style={{ textAlign: 'center', fontSize: '12px', color: '#9999a5', lineHeight: '1.6' }}>
                   No charge · No obligation · 100% confidential
