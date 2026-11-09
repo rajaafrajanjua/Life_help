@@ -14,7 +14,7 @@ export default function Disclaimer() {
           subject to policy terms. No specific coverage outcomes, savings, or guaranteed approval are implied or promised.
           All Generations Life Brokers LLC does not provide legal, tax, or financial planning advice.
           Consult a qualified professional for such guidance.
-          20 Towne Drive, PMB 339, Bluffton SC 29910 · allgenerationsinsurancebrokers.com
+          20 Towne Drive, PMB 339, Bluffton SC 29910 · policy-cove.com
         </p>
       </div>
     </div>

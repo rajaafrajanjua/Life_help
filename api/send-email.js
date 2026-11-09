@@ -74,7 +74,7 @@ module.exports = async function handler(req, res) {
         <div style="padding:16px 32px;background:#f8f9fb;text-align:center;">
           <p style="margin:0;font-size:11px;color:#9999a5;">
             All Generations Life Brokers LLC · 20 Towne Drive, PMB 339, Bluffton SC 29910<br/>
-            Filing ID# 220404-1051096 · allgenerationsinsurancebrokers.com · policycove@gmail.com
+            Filing ID# 220404-1051096 · policycove@gmail.com
           </p>
         </div>
       </div>
@@ -109,7 +109,7 @@ module.exports = async function handler(req, res) {
             <p style="margin:0 0 4px;font-size:13px;color:#1a8c8c;font-weight:700;">All Generations Life Brokers LLC</p>
             <p style="margin:0 0 2px;font-size:13px;color:#6b6b70;">20 Towne Drive, PMB 339 · Bluffton, SC 29910</p>
             <p style="margin:4px 0 0;font-size:13px;color:#0d1f3c;font-weight:600;">(844) 425-5436</p>
-            <p style="margin:2px 0 0;font-size:13px;color:#1a8c8c;">allgenerationsinsurancebrokers.com</p>
+            <p style="margin:2px 0 0;font-size:13px;color:#1a8c8c;">policycove@gmail.com</p>
           </div>
           <p style="color:#6b6b70;font-size:13px;line-height:1.7;margin:20px 0 0;">
             If you have any questions, reply to this email or call us at <strong>(844) 425-5436</strong>.

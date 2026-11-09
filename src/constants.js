@@ -6,7 +6,7 @@ export const TAGLINE        = 'Protecting Every Generation, Every Step of the Wa
 export const PHONE_RAW      = '+18444255436';
 export const PHONE_DISPLAY  = '(844) 425-5436';
 export const EMAIL          = 'policycove@gmail.com';
-export const WEBSITE        = 'allgenerationsinsurancebrokers.com';
+export const WEBSITE        = 'policy-cove.com/';
 
 export const ADDRESS_LINE1  = '20 Towne Drive, PMB 339';
 export const ADDRESS_LINE2  = 'Bluffton, SC 29910';
