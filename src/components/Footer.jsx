@@ -1,5 +1,5 @@
 import { Phone, Mail, Clock, Shield } from 'lucide-react';
-import { PHONE_RAW, PHONE_DISPLAY, EMAIL, ADDRESS_LINE1, ADDRESS_LINE2, FILING_ID, WEBSITE, BRAND_NAME, BRAND_SHORT } from '../constants';
+import { PHONE_RAW, PHONE_DISPLAY, EMAIL, ADDRESS_LINE1, ADDRESS_LINE2, FILING_ID } from '../constants';
 
 const PHONE = PHONE_RAW;
 

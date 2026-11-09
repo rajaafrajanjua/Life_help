@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { FileSearch, Flower2, Heart, Clock, Users, BookOpen, ArrowUpRight, Phone, Calendar } from 'lucide-react';
 
-import { PHONE_RAW, PHONE_DISPLAY } from '../constants';
+import { PHONE_RAW } from '../constants';
 
 const PHONE = PHONE_RAW;
 const services = [

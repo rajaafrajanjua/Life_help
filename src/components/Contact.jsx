@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Phone, Mail, Clock, Send, CheckCircle2, Calendar } from 'lucide-react';
-import { PHONE_RAW, PHONE_DISPLAY, EMAIL, ADDRESS_LINE1, ADDRESS_LINE2, BRAND_NAME } from '../constants';
+import { PHONE_RAW, PHONE_DISPLAY, EMAIL } from '../constants';
 
 const PHONE = PHONE_RAW;
 

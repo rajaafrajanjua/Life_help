@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Phone, Calendar, CheckCircle2, ShieldCheck, Star } from 'lucide-react';
-import { PHONE_RAW, PHONE_DISPLAY, BRAND_NAME, TAGLINE } from '../constants';
+import { PHONE_RAW, PHONE_DISPLAY, BRAND_NAME } from '../constants';
 
 const PHONE = PHONE_RAW;
 
