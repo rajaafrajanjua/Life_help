@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { Phone, Calendar, CheckCircle2, ShieldCheck, Star } from 'lucide-react';
+import { PHONE_RAW, PHONE_DISPLAY, BRAND_NAME, TAGLINE } from '../constants';
 
-const PHONE = '+17087042830';
-const PHONE_DISPLAY = '+1 (708) 704-2830';
+const PHONE = PHONE_RAW;
 
 const fade = (delay = 0) => ({
   initial: { opacity: 0, y: 36 },
@@ -65,7 +65,7 @@ export default function Hero({ onBook }) {
                 width: '7px', height: '7px', background: '#2ab5b5',
                 borderRadius: '50%', animation: 'blink 2s infinite',
               }} />
-              Independent Life Insurance Brokerage
+              Independent Life Insurance Brokerage — SC
             </motion.div>
 
             <motion.h1 {...fade(0.1)} style={{
@@ -158,7 +158,7 @@ export default function Hero({ onBook }) {
                 Your Coverage. Your Questions. Our Guidance.
               </h3>
               <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: 'clamp(13px, 1.5vw, 14px)', lineHeight: '1.72' }}>
-                At PolicyCove, we believe understanding life insurance shouldn't be complicated.
+              At {BRAND_NAME}, we believe understanding life insurance shouldn't be complicated.
                 Education first. Protection with purpose.
               </p>
             </div>
@@ -200,8 +200,8 @@ export default function Hero({ onBook }) {
                 <Star size={22} color="#fff" fill="#fff" strokeWidth={1.5} />
               </div>
               <div>
-                <div style={{ color: '#fff', fontSize: '14px', fontWeight: 600 }}>Alonzo Carr</div>
-                <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px' }}>Licensed Insurance Broker · PolicyCove</div>
+                <div style={{ color: '#fff', fontSize: '14px', fontWeight: 600 }}>All Generations Life Brokers LLC</div>
+                <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px' }}>Independent Life Insurance Brokerage</div>
                 <a href={`tel:${PHONE}`} style={{ color: '#e0b04a', fontSize: '12px', fontWeight: 600, marginTop: '2px', display: 'block' }}>
                   {PHONE_DISPLAY}
                 </a>

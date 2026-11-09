@@ -64,7 +64,7 @@ export default function About() {
                 A Safe Place for<br />Life Insurance Answers
               </h3>
               <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 'clamp(13px,1.5vw,15px)', lineHeight: '1.75' }}>
-                Like a lighthouse guiding ships to safe harbor, PolicyCove guides families toward clarity and confidence in their financial protection decisions.
+                Like a lighthouse guiding ships to safe harbor, All Generations Life Brokers LLC guides families toward clarity and confidence in their financial protection decisions.
               </p>
             </div>
 
@@ -110,7 +110,7 @@ export default function About() {
                 letterSpacing: '2px', textTransform: 'uppercase',
                 padding: '6px 14px', borderRadius: '50px', marginBottom: '18px',
               }}>
-                Welcome to PolicyCove
+                Welcome to All Generations Life Brokers
               </div>
               <h2 style={{
                 fontFamily: 'Syne', fontWeight: 800,

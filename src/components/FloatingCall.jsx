@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, X, Calendar } from 'lucide-react';
 
-const PHONE = '+17087042830';
-const PHONE_DISPLAY = '+1 (708) 704-2830';
+import { PHONE_RAW, PHONE_DISPLAY } from '../constants';
 
+const PHONE = PHONE_RAW;
 export default function FloatingCall({ onBook }) {
   const [popup, setPopup] = useState(false);
   const [gone, setGone] = useState(false);
@@ -26,7 +26,7 @@ export default function FloatingCall({ onBook }) {
         transition={{ delay: 1.8, type: 'spring', stiffness: 200, damping: 14 }}
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.94 }}
-        aria-label="Call PolicyCove"
+        aria-label="Call All Generations Life Brokers"
         style={{
           position: 'fixed',
           bottom: 'clamp(20px,4vw,32px)',
@@ -88,7 +88,7 @@ export default function FloatingCall({ onBook }) {
               Free Policy Review
             </div>
             <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.55)', lineHeight: '1.5', marginBottom: '10px' }}>
-              Speak with Alonzo — no charge, no pressure.
+              Speak with a licensed broker at All Generations — no charge, no pressure.
             </div>
             <button
               onClick={() => { setPopup(false); onBook(); }}

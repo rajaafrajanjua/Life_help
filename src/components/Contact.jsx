@@ -1,10 +1,9 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Phone, Mail, Clock, Send, CheckCircle2, Calendar } from 'lucide-react';
+import { PHONE_RAW, PHONE_DISPLAY, EMAIL, ADDRESS_LINE1, ADDRESS_LINE2, BRAND_NAME } from '../constants';
 
-const PHONE = '+17087042830';
-const PHONE_DISPLAY = '+1 (708) 704-2830';
-const EMAIL = 'alcarr33@gmail.com';
+const PHONE = PHONE_RAW;
 
 const states = [
   'Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware',
@@ -72,6 +71,16 @@ export default function Contact({ onBook }) {
     e.preventDefault();
     setSending(true);
     setError('');
+
+    // On localhost skip the API call — test UI only. Real emails send on Vercel.
+    const isLocalhost = window.location.hostname === 'localhost' ||
+                        window.location.hostname === '127.0.0.1';
+
+    if (isLocalhost) {
+      setTimeout(() => { setSending(false); setSubmitted(true); }, 800);
+      return;
+    }
+
     try {
       const res = await fetch('/api/send-email', {
         method: 'POST',
@@ -176,13 +185,13 @@ export default function Contact({ onBook }) {
                 <span style={{ fontFamily: 'Syne', fontWeight: 800, fontSize: '18px', color: '#fff' }}>AC</span>
               </div>
               <h3 style={{ fontFamily: 'Syne', fontWeight: 800, fontSize: 'clamp(18px,2.5vw,24px)', marginBottom: '4px' }}>
-                Alonzo Carr
+                All Generations Life Brokers LLC
               </h3>
               <p style={{ color: '#2ab5b5', fontSize: '13px', fontWeight: 600, marginBottom: '18px' }}>
-                Licensed Insurance Broker · Owner, PolicyCove
+                Independent Life Insurance Brokerage · Bluffton, SC
               </p>
               <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 'clamp(13px,1.5vw,14px)', lineHeight: '1.72', position: 'relative', zIndex: 1 }}>
-                "I started PolicyCove to help families get clear, honest answers about life insurance — without the pressure or confusion. I'm here to guide you, not sell you."
+                "We started All Generations Life Brokers to help families get clear, honest answers about life insurance — without the pressure or confusion. We're here to guide you, not sell you."
               </p>
             </div>
 
@@ -246,7 +255,7 @@ export default function Contact({ onBook }) {
                   Request Received!
                 </h3>
                 <p style={{ color: '#6b6b70', fontSize: 'clamp(14px,1.6vw,16px)', lineHeight: '1.72', maxWidth: '360px', margin: '0 auto 24px' }}>
-                  Thank you for reaching out to PolicyCove. Alonzo will be in touch with you shortly to schedule your complimentary policy review.
+                  Thank you for reaching out to All Generations Life Brokers LLC. A licensed broker will be in touch with you shortly to schedule your complimentary policy review.
                 </p>
                 <a href={`tel:${PHONE}`} style={{
                   display: 'inline-flex', alignItems: 'center', gap: '8px',
@@ -347,7 +356,7 @@ export default function Contact({ onBook }) {
                       style={{ width: '16px', height: '16px', marginTop: '2px', flexShrink: 0, accentColor: '#1a8c8c' }}
                     />
                     <span style={{ fontSize: '12px', color: '#6b6b70', lineHeight: '1.65' }}>
-                      By submitting this form, I consent to be contacted by PolicyCove via phone, text, or email regarding life insurance information and my free policy review request. Message and data rates may apply. I understand that providing consent is not a condition of receiving a free policy review, and I may opt out at any time. PolicyCove is an independent insurance brokerage, not an insurance carrier. Subject to state availability and carrier approval.
+                      By submitting this form, I consent to be contacted by All Generations Life Brokers LLC via phone, text, or email regarding life insurance information and my free policy review request. Message and data rates may apply. I understand that providing consent is not a condition of receiving a free policy review, and I may opt out at any time. All Generations Life Brokers LLC is an independent insurance brokerage, not an insurance carrier. Subject to state availability and carrier approval.
                     </span>
                   </label>
                 </div>

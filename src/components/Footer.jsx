@@ -1,8 +1,7 @@
 import { Phone, Mail, Clock, Shield } from 'lucide-react';
+import { PHONE_RAW, PHONE_DISPLAY, EMAIL, ADDRESS_LINE1, ADDRESS_LINE2, FILING_ID, WEBSITE, BRAND_NAME, BRAND_SHORT } from '../constants';
 
-const PHONE = '+17087042830';
-const PHONE_DISPLAY = '+1 (708) 704-2830';
-const EMAIL = 'alcarr33@yahoo.com';
+const PHONE = PHONE_RAW;
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -36,12 +35,12 @@ export default function Footer() {
                   </linearGradient>
                 </defs>
               </svg>
-              <span style={{ fontFamily: 'Syne', fontWeight: 800, fontSize: '18px', color: '#fff' }}>
-                Policy<span style={{ color: '#2ab5b5' }}>Cove</span>
+              <span style={{ fontFamily: 'Syne', fontWeight: 800, fontSize: '16px', color: '#fff', lineHeight: '1.2' }}>
+                All Generations<br/><span style={{ color: '#2ab5b5' }}>Life Brokers LLC</span>
               </span>
             </div>
             <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '13px', lineHeight: '1.75', maxWidth: '220px', marginBottom: '20px' }}>
-              Your Coverage. Your Questions. Our Guidance.
+              Protecting Every Generation, Every Step of the Way.
             </p>
             <a href={`tel:${PHONE}`}
               style={{
@@ -124,7 +123,9 @@ export default function Footer() {
               </div>
               <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
                 <Shield size={14} color="#2ab5b5" strokeWidth={2} style={{ flexShrink: 0, marginTop: '2px' }} />
-                <div style={{ color: 'rgba(255,255,255,0.42)', fontSize: '13px' }}>Licensed & Independent</div>
+                <div style={{ color: 'rgba(255,255,255,0.42)', fontSize: '13px' }}>
+                  {ADDRESS_LINE1}<br/>{ADDRESS_LINE2}
+                </div>
               </div>
             </div>
           </div>
@@ -138,7 +139,7 @@ export default function Footer() {
           justifyContent: 'space-between', alignItems: 'center', gap: '10px',
         }}>
           <p style={{ color: 'rgba(255,255,255,0.28)', fontSize: '12px' }}>
-            © {year} PolicyCove. Independent Life Insurance Brokerage. All rights reserved.
+            © {year} All Generations Life Brokers LLC · Filing ID# {FILING_ID} · Independent Life Insurance Brokerage · All rights reserved.
           </p>
           <div style={{ display: 'flex', gap: '18px', flexWrap: 'wrap' }}>
             {['Privacy Policy', 'Terms of Service', 'Accessibility'].map(item => (

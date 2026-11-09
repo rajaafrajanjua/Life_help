@@ -5,7 +5,7 @@ import {
   User, Phone, Mail, CheckCircle2, ArrowRight, Loader,
 } from 'lucide-react';
 
-const PHONE_DISPLAY = '+1 (708) 704-2830';
+const PHONE_DISPLAY = '(844) 425-5436';
 
 const TIME_SLOTS = [
   '9:00 AM','9:30 AM','10:00 AM','10:30 AM',
@@ -185,6 +185,17 @@ export default function BookingModal({ isOpen, onClose }) {
       return;
     }
     setSending(true); setError('');
+
+    // On localhost there is no API server — skip the call and show success
+    // so you can test the UI flow. On Vercel the real API runs.
+    const isLocalhost = window.location.hostname === 'localhost' ||
+                        window.location.hostname === '127.0.0.1';
+
+    if (isLocalhost) {
+      setTimeout(() => { setSending(false); setStep(4); }, 800);
+      return;
+    }
+
     try {
       const res = await fetch('/api/send-email', {
         method: 'POST',
@@ -536,7 +547,7 @@ export default function BookingModal({ isOpen, onClose }) {
                         Appointment Confirmed!
                       </h3>
                       <p style={{ color:'#6b6b70', fontSize:'clamp(13px,3vw,15px)', lineHeight:'1.7', maxWidth:'360px', margin:'0 auto 20px' }}>
-                        Alonzo will reach out shortly to confirm your session.
+                        A licensed broker will reach out shortly to confirm your session.
                       </p>
 
                       {/* Summary */}
@@ -564,7 +575,7 @@ export default function BookingModal({ isOpen, onClose }) {
 
                       <p style={{ fontSize:'12px', color:'#9999a5', marginBottom:'16px' }}>
                         Questions?{' '}
-                        <a href="tel:+17087042830" style={{ color:'#1a8c8c', fontWeight:600 }}>{PHONE_DISPLAY}</a>
+                        <a href="tel:+18444255436" style={{ color:'#1a8c8c', fontWeight:600 }}>{PHONE_DISPLAY}</a>
                       </p>
 
                       <button onClick={onClose}

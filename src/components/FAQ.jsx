@@ -2,8 +2,9 @@ import { useRef, useState } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { Plus, Minus, Phone } from 'lucide-react';
 
-const PHONE = '+17087042830';
-const PHONE_DISPLAY = '+1 (708) 704-2830';
+import { PHONE_RAW, PHONE_DISPLAY } from '../constants';
+
+const PHONE = PHONE_RAW;
 
 const faqs = [
   {
@@ -11,7 +12,7 @@ const faqs = [
     a: "A free policy review is a complimentary consultation where we examine your existing life insurance coverage — including your beneficiaries, premiums, policy provisions, and death benefit — and explain it to you in plain language. There's no charge and no obligation to make any changes.",
   },
   {
-    q: 'What types of life insurance does PolicyCove offer guidance on?',
+    q: 'What types of life insurance does All Generations Life Brokers offer guidance on?',
     a: "We help clients understand and explore final expense insurance, whole life insurance, term life insurance, and family protection plans. As an independent brokerage, we work with multiple carriers to find options that fit your goals and budget.",
   },
   {
@@ -31,12 +32,12 @@ const faqs = [
     a: "Final expense insurance is a type of whole life insurance designed to help cover end-of-life costs like funeral and burial expenses, medical bills, and outstanding debts. It typically offers smaller coverage amounts (often $5,000–$40,000) and may not require a medical exam.",
   },
   {
-    q: "Will PolicyCove pressure me to buy a policy?",
+    q: "Will All Generations Life Brokers pressure me to buy a policy?",
     a: "Absolutely not. Our philosophy is education first, protection with purpose. We believe informed clients make better decisions. We're here to answer questions and present options — the choice is always yours, with no pressure or obligation.",
   },
   {
-    q: "Is PolicyCove an insurance company?",
-    a: "No. PolicyCove is an independent life insurance brokerage. We are not an insurance carrier. We help clients understand their options and connect them with coverage from multiple insurance carriers, subject to state availability and carrier approval.",
+    q: "Is All Generations Life Brokers an insurance company?",
+    a: "No. All Generations Life Brokers LLC is an independent life insurance brokerage, not an insurance carrier. We help clients understand their options and connect them with coverage from multiple insurance carriers, subject to state availability and carrier approval.",
   },
 ];
 
@@ -171,7 +172,7 @@ export default function FAQ() {
                 Still have questions?
               </h4>
               <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 'clamp(13px,1.5vw,14px)', marginBottom: '20px', lineHeight: '1.65', position: 'relative', zIndex: 1 }}>
-                Speak directly with Alonzo Carr, licensed insurance broker, at no charge.
+                Speak directly with a licensed broker at All Generations Life Brokers, at no charge.
               </p>
               <a href={`tel:${PHONE}`}
                 style={{

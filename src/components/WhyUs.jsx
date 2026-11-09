@@ -50,13 +50,13 @@ export default function WhyUs({ onBook }) {
             color: '#2ab5b5', fontSize: '12px', fontWeight: 700,
             letterSpacing: '2px', textTransform: 'uppercase',
             padding: '6px 14px', borderRadius: '50px', marginBottom: '16px',
-          }}>Why PolicyCove</div>
+          }}>Why All Generations</div>
           <h2 style={{
             fontFamily: 'Syne', fontWeight: 800,
             fontSize: 'clamp(28px,4vw,48px)',
             color: '#fff', letterSpacing: '-0.8px',
           }}>
-            The PolicyCove Difference
+            The All Generations Difference
           </h2>
         </motion.div>
 
@@ -119,11 +119,11 @@ export default function WhyUs({ onBook }) {
             fontFamily: 'Syne', fontWeight: 700,
             fontSize: 'clamp(16px,2.5vw,24px)', color: '#fff', lineHeight: '1.4',
           }}>
-            "At PolicyCove, you're more than a policy number.<br />
+            "At All Generations Life Brokers, you're more than a policy number.<br />
             <span style={{ color: '#2ab5b5' }}>You're a person, a family, and a future worth protecting.</span>"
           </p>
           <div style={{ marginTop: '16px', color: 'rgba(255,255,255,0.4)', fontSize: '13px' }}>
-            — Alonzo Carr, Licensed Insurance Broker & Owner, PolicyCove
+            — All Generations Life Brokers LLC · Bluffton, SC
           </div>
           <motion.button
             onClick={onBook}

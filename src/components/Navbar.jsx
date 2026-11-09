@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Menu, X, Calendar } from 'lucide-react';
 
-const PHONE = '+17087042830';
-const PHONE_DISPLAY = '+1 (708) 704-2830';
+import { PHONE_RAW as PHONE, PHONE_DISPLAY } from '../constants';
 
 export default function Navbar({ onBook }) {
   const [scrolled, setScrolled] = useState(false);
@@ -63,7 +62,7 @@ export default function Navbar({ onBook }) {
               fontFamily: 'Syne, sans-serif', fontWeight: 800,
               fontSize: '20px', color: '#fff', letterSpacing: '-0.4px',
             }}>
-              Policy<span style={{ color: '#2ab5b5' }}>Cove</span>
+              All Generations<span style={{ color: '#2ab5b5' }}> Life</span>
             </span>
           </a>
 
@@ -111,7 +110,7 @@ export default function Navbar({ onBook }) {
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 18px rgba(26,140,140,0.35)'; }}
             >
               <Phone size={14} strokeWidth={2.5} />
-              <span className="cta-num">{PHONE_DISPLAY}</span>
+            <span className="cta-num">{PHONE_DISPLAY}</span>
             </a>
             <button onClick={() => setMenuOpen(!menuOpen)} className="hamburger-btn"
               style={{
