@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Phone, Mail, Clock, Send, CheckCircle2, Calendar } from 'lucide-react';
 import { PHONE_RAW, PHONE_DISPLAY, EMAIL } from '../constants';
+import { fireConversion } from '../utils/gtag';
 
 const PHONE = PHONE_RAW;
 
@@ -77,7 +78,7 @@ export default function Contact({ onBook }) {
                         window.location.hostname === '127.0.0.1';
 
     if (isLocalhost) {
-      setTimeout(() => { setSending(false); setSubmitted(true); }, 800);
+      setTimeout(() => { setSending(false); setSubmitted(true); fireConversion(); }, 800);
       return;
     }
 
@@ -97,6 +98,7 @@ export default function Contact({ onBook }) {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Submission failed');
+      fireConversion();
       setSubmitted(true);
     } catch (err) {
       setError(err.message || 'Something went wrong. Please call us directly.');

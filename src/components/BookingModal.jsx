@@ -4,6 +4,7 @@ import {
   X, ChevronLeft, ChevronRight, Clock, Calendar,
   User, Phone, Mail, CheckCircle2, ArrowRight, Loader,
 } from 'lucide-react';
+import { fireConversion } from '../utils/gtag';
 
 const PHONE_DISPLAY = '(844) 425-5436';
 
@@ -192,7 +193,7 @@ export default function BookingModal({ isOpen, onClose }) {
                         window.location.hostname === '127.0.0.1';
 
     if (isLocalhost) {
-      setTimeout(() => { setSending(false); setStep(4); }, 800);
+      setTimeout(() => { setSending(false); setStep(4); fireConversion(); }, 800);
       return;
     }
 
@@ -211,6 +212,7 @@ export default function BookingModal({ isOpen, onClose }) {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Send failed');
+      fireConversion();
       setStep(4);
     } catch (err) {
       setError(err.message || 'Could not send. Please call us at ' + PHONE_DISPLAY);
